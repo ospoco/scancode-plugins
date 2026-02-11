@@ -63,6 +63,7 @@ doc/pyvenv.cfg
 
 # pyenv
 /.python-version
+/.venv
 pyvenv.cfg
 
 /man/
