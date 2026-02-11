@@ -1,0 +1,41 @@
+{
+  "homebrew_version": "5.0.12-62-g024ad4f",
+  "used_options": [],
+  "unused_options": [],
+  "built_as_bottle": true,
+  "poured_from_bottle": true,
+  "loaded_from_api": true,
+  "installed_as_dependency": false,
+  "installed_on_request": true,
+  "changed_files": [
+    "lib/pkgconfig/libdwarf.pc"
+  ],
+  "time": 1770149155,
+  "source_modified_time": 1769797320,
+  "compiler": "clang",
+  "aliases": [
+    "libdwarf"
+  ],
+  "runtime_dependencies": [],
+  "source": {
+    "spec": "stable",
+    "versions": {
+      "stable": "2.3.0",
+      "head": null,
+      "version_scheme": 1,
+      "compatibility_version": null
+    },
+    "path": "/Users/van/Library/Caches/Homebrew/api/formula.jws.json",
+    "tap_git_head": "c62cffdc8d8b07d242d457f1ac1e3123b8630ea0",
+    "tap": "homebrew/core"
+  },
+  "arch": "arm64",
+  "built_on": {
+    "os": "Macintosh",
+    "os_version": "macOS 26",
+    "cpu_family": "dunno",
+    "xcode": "26.2",
+    "clt": "26.2.0.0.1.1764812424",
+    "preferred_perl": "5.34"
+  }
+}

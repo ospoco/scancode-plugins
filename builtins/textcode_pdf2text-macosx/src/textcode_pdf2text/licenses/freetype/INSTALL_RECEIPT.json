@@ -1,0 +1,50 @@
+{
+  "homebrew_version": "4.6.11-62-gffdb66a",
+  "used_options": [],
+  "unused_options": [],
+  "built_as_bottle": true,
+  "poured_from_bottle": true,
+  "loaded_from_api": true,
+  "installed_as_dependency": true,
+  "installed_on_request": false,
+  "changed_files": [
+    "bin/freetype-config",
+    "lib/pkgconfig/freetype2.pc"
+  ],
+  "time": 1758996911,
+  "source_modified_time": 1757589576,
+  "compiler": "clang",
+  "aliases": [
+    "freetype2"
+  ],
+  "runtime_dependencies": [
+    {
+      "full_name": "libpng",
+      "version": "1.6.50",
+      "revision": 0,
+      "bottle_rebuild": 0,
+      "pkg_version": "1.6.50",
+      "declared_directly": true
+    }
+  ],
+  "source": {
+    "spec": "stable",
+    "versions": {
+      "stable": "2.14.1",
+      "head": null,
+      "version_scheme": 0
+    },
+    "path": "/Users/van/Library/Caches/Homebrew/api/formula.jws.json",
+    "tap_git_head": "49b612d86a5672c1a7b52fe8add45ac9ad597960",
+    "tap": "homebrew/core"
+  },
+  "arch": "arm64",
+  "built_on": {
+    "os": "Macintosh",
+    "os_version": "macOS 26",
+    "cpu_family": "dunno",
+    "xcode": "26.0",
+    "clt": "26.0.0.0.1.1756965055",
+    "preferred_perl": "5.34"
+  }
+}

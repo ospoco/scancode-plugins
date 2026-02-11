@@ -1,7 +1,7 @@
-    p7zip 16.02
+    p7zip 17.05
     ===========
 
-Homepage : http://p7zip.sourceforge.net/
+Homepage : https://github.com/p7zip-project/p7zip
 
 p7zip is a port of the Windows programs 7z.exe and 7za.exe provided by 7-zip.
 
@@ -182,12 +182,12 @@ INSTALL :
   --------
   - edit install.sh to change DEST_HOME
   - ./install.sh : to install
-  Remark : you must be "root" to install 7za in the directory "@@HOMEBREW_PREFIX@@"
+  Remark : you must be "root" to install 7za in the directory "/usr/local"
 
   method 2
   --------
   - 7za is a stand-alone program, you can put this program where you want.
-  example :  cp bin/7za @@HOMEBREW_PREFIX@@/bin/7za
+  example :  cp bin/7za /usr/local/bin/7za
 
   - 7z needs its plugins. You must copy the file 7z, 7z.so
     and the directory Codecs in the same destination directory.

@@ -1,1 +1,48 @@
-{"homebrew_version":"2.7.2","used_options":[],"unused_options":[],"built_as_bottle":true,"poured_from_bottle":false,"installed_as_dependency":false,"installed_on_request":true,"changed_files":["bin/7z","bin/7za","bin/7zr","INSTALL_RECEIPT.json","README","share/doc/p7zip/README","share/man/man1/7z.1","share/man/man1/7za.1","share/man/man1/7zr.1"],"time":null,"source_modified_time":1468488571,"HEAD":null,"stdlib":"libcxx","compiler":"clang","aliases":[],"runtime_dependencies":[],"source":{"path":"@@HOMEBREW_REPOSITORY@@/Library/Taps/homebrew/homebrew-core/Formula/p7zip.rb","tap":"homebrew/core","spec":"stable","versions":{"stable":"16.02","head":"","version_scheme":0}},"arch":"x86_64","built_on":{"os":"Macintosh","os_version":"macOS 10.14.6","cpu_family":"penryn","xcode":"11.3.1","clt":"11.3.1.0.1.1576735732"}}
+{
+  "homebrew_version": "4.4.15-8-g798f91c",
+  "used_options": [
+
+  ],
+  "unused_options": [
+
+  ],
+  "built_as_bottle": true,
+  "poured_from_bottle": true,
+  "loaded_from_api": true,
+  "installed_as_dependency": false,
+  "installed_on_request": true,
+  "changed_files": [
+    "bin/7z",
+    "bin/7za",
+    "bin/7zr"
+  ],
+  "time": 1736783488,
+  "source_modified_time": 1729152220,
+  "compiler": "clang",
+  "aliases": [
+
+  ],
+  "runtime_dependencies": [
+
+  ],
+  "source": {
+    "spec": "stable",
+    "versions": {
+      "stable": "17.06",
+      "head": null,
+      "version_scheme": 0
+    },
+    "path": "/Users/van/Library/Caches/Homebrew/api/formula.jws.json",
+    "tap_git_head": "837c370994539400f405d8c70dd7c8ed59e7c0b2",
+    "tap": "homebrew/core"
+  },
+  "arch": "arm64",
+  "built_on": {
+    "os": "Macintosh",
+    "os_version": "macOS 15",
+    "cpu_family": "dunno",
+    "xcode": "16.2",
+    "clt": "16.2.0.0.1.1733547573",
+    "preferred_perl": "5.34"
+  }
+}

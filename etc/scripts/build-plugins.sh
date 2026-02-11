@@ -13,7 +13,10 @@ set -x
 
 here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 dist=$here/../../dist
-mkdir -p $dist
+mkdir -p "$dist"
+
+plat_name="${SCANCODE_PLUGINS_PLAT_NAME:-}"
+python_tag="${SCANCODE_PLUGINS_PYTHON_TAG:-py3}"
 
 for root in builtins misc binary-analysis
   do
@@ -22,8 +25,12 @@ for root in builtins misc binary-analysis
         pushd $root/$plugin
         rm -rf dist build
         # build and copy up
-        python setup.py release
-        mv dist/* $dist
+        if [ -n "$plat_name" ]; then
+          python setup.py clean --all bdist_wheel --plat-name "$plat_name" --python-tag "$python_tag"
+        else
+          python setup.py release
+        fi
+        mv dist/* "$dist"
         rm -rf build
         popd
       done

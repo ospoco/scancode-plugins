@@ -42,4 +42,35 @@ To build the wheels for all the plugins::
 
     etc/scripts/build-plugins.sh
 
+To override the platform tag (e.g., for Apple Silicon) set
+``SCANCODE_PLUGINS_PLAT_NAME`` and optionally ``SCANCODE_PLUGINS_PYTHON_TAG``::
+
+    SCANCODE_PLUGINS_PLAT_NAME=macosx_15_0_arm64 \
+      SCANCODE_PLUGINS_PYTHON_TAG=py3 \
+      etc/scripts/build-plugins.sh
+
 The dirs/ directory will contain all the built wheels.
+
+To build Linux manylinux2014 x86_64 wheels in Docker::
+
+    docker build --platform linux/amd64 \
+      -f etc/docker/scancode-linux-x86_64.Dockerfile \
+      -t scancode-linux-x86_64:latest .
+
+    docker run --rm --platform linux/amd64 \
+      -v "$(pwd)":/work/scancode-plugins \
+      -w /work/scancode-plugins \
+      scancode-linux-x86_64:latest \
+      bash -lc etc/scripts/build-linux-x86_64.sh
+
+To collect the multi-arch wheel set for publishing (default: ModelMonster
+packages on linux/x86_64, linux/aarch64, and macos/arm64)::
+
+    etc/scripts/copy-wheels.sh --target /tmp/wheels
+
+To prepare a GitHub Pages style tree (`dist/` under repo root)::
+
+    etc/scripts/copy-wheels.sh \
+      --layout repo \
+      --target /tmp/scancode-plugins-pages \
+      --base-url https://ospoco.github.io/scancode-plugins/dist/
