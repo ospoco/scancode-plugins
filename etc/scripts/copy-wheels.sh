@@ -25,8 +25,11 @@ COPY_ALL=0
 GENERATE_INDEX=1
 
 # ModelMonster wheel set and platform matrix.
-PACKAGE_REGEX='^(extractcode_7z|extractcode_libarchive|typecode_libmagic|textcode_pdf2text|scancode_ctags|scancode_dwarfdump|scancode_readelf)-'
-PLATFORM_REGEX='(manylinux2014_x86_64|manylinux2014_aarch64|macosx_15_0_arm64)\.whl$'
+# pyicu / py-ubjson are mm runtime wheels (host weft venv must install without
+# a compiler toolchain); sdist names use a dash where wheel names use an
+# underscore, so the package match accepts both.
+PACKAGE_REGEX='^(extractcode_7z|extractcode_libarchive|typecode_libmagic|textcode_pdf2text|scancode_ctags|scancode_dwarfdump|scancode_readelf|pyicu|py[-_]ubjson)-'
+PLATFORM_REGEX='(manylinux2014_x86_64|manylinux2014_aarch64|manylinux_2_[0-9]+_x86_64|manylinux_2_[0-9]+_aarch64|macosx_15_0_arm64)\.whl$'
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -84,15 +87,15 @@ if [ ! -d "$root_dist_dir" ]; then
 fi
 
 mkdir -p "$out_dir"
-find "$out_dir" -maxdepth 1 -type f \( -name '*.whl' -o -name 'index.html' \) -delete
+find "$out_dir" -maxdepth 1 -type f \( -name '*.whl' -o -name '*.tar.gz' -o -name 'index.html' \) -delete
 
 tmp_list="$(mktemp)"
 trap 'rm -f "$tmp_list"' EXIT
 
 {
-  find "$root_dist_dir" -maxdepth 1 -type f -name '*.whl'
+  find "$root_dist_dir" -maxdepth 1 -type f \( -name '*.whl' -o -name '*.tar.gz' \)
   find "$repo_root/builtins" "$repo_root/binary-analysis" "$repo_root/misc" \
-    -type f -path '*/dist/*.whl' 2>/dev/null || true
+    -type f \( -path '*/dist/*.whl' -o -path '*/dist/*.tar.gz' \) 2>/dev/null || true
 } > "$tmp_list"
 
 if [ ! -s "$tmp_list" ]; then
@@ -107,7 +110,8 @@ while IFS= read -r wheel; do
     if ! [[ "$name" =~ $PACKAGE_REGEX ]]; then
       continue
     fi
-    if ! [[ "$name" =~ $PLATFORM_REGEX ]]; then
+    # Platform filter applies to wheels only; sdists carry no platform tag.
+    if [[ "$name" == *.whl ]] && ! [[ "$name" =~ $PLATFORM_REGEX ]]; then
       continue
     fi
   fi
@@ -143,7 +147,7 @@ def format_size(num_bytes: int) -> str:
         return f"{num_bytes / 1024:.1f} KB"
     return f"{num_bytes / (1024 * 1024):.1f} MB"
 
-files = sorted(out_dir.glob("*.whl"), key=lambda p: p.name)
+files = sorted([*out_dir.glob("*.whl"), *out_dir.glob("*.tar.gz")], key=lambda p: p.name)
 today = datetime.now().strftime("%Y-%m-%d")
 
 if base_url and not base_url.endswith("/"):
